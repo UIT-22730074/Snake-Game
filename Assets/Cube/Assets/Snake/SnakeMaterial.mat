@@ -55,7 +55,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amount: -0.0054275137
+    - _Amount: -0.0054534907
     - _NoiseScale: 2000
     - _QueueControl: 0
     - _QueueOffset: 0

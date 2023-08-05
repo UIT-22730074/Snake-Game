@@ -24,6 +24,7 @@ Hình ảnh của trò chơi:
 ### Khởi động trò chơi:
 
 - Để chạy trò chơi con rắn, bạn tải game tại đây [https://drive.google.com/file/d/1k47w5K_QuC1n6UI7n5bmjEiCvio8UhL5/view?usp=sharing](https://drive.google.com/file/d/1FfmUjm0pMh1GEC6eJ7wq0A7uSxivY7p6/view?usp=sharing)
+- Hoặc tải tại: https://github.com/UIT-22730074/Snake-Game/releases/tag/1.0
 - Sau khi tải về giải nén và chạy file Snake-Game.exe
 ### Điều khiển con rắn:
 

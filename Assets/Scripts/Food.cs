@@ -5,7 +5,12 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     private SnakeMovement snake;
-
+    [SerializeField]
+    private ParticleSystem fire;
+    Vector3 oldPos = Vector3.zero;
+    private bool first = true;
+    [SerializeField]
+    AudioSource eat;
     private void Awake()
     {
         snake = FindObjectOfType<SnakeMovement>();
@@ -17,7 +22,17 @@ public class Food : MonoBehaviour
 
     public void RandomizePosition()
     {
+        if (first)
+        {
+            first = false;
+        }
+        else
+        {
+            fire.transform.position = oldPos;
+            fire.Play();
 
+        }
+    
         // Pick a random position inside the bounds
         // Round the values to ensure it aligns with the grid
         int x = Mathf.RoundToInt(Random.Range(-10, 9));
@@ -39,7 +54,9 @@ public class Food : MonoBehaviour
             }
         }
 
-        transform.position = new Vector3(x, 1f, y);
+
+        oldPos = new Vector3(x, 1f, y);
+        transform.position = oldPos;
     }
 
 
@@ -47,5 +64,6 @@ public class Food : MonoBehaviour
     {
         RandomizePosition();
         snake.Grow();
+        eat.Play();
     }
 }

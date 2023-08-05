@@ -56,8 +56,30 @@
                 },
                 {
                     "name": "",
+                    "id": "3f2c3caa-47d9-43b9-afa5-e8ac04b549a3",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "W",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b49e399a-ffd2-4a5e-a4a3-567775711de1",
                     "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f9a0ba7-93a8-4cdf-bda5-b0d26baea5dc",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -78,8 +100,30 @@
                 },
                 {
                     "name": "",
+                    "id": "c23f3e59-7fca-4f4a-a7c1-1890517aef21",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "D",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "437b75b9-e385-4537-ba4b-e1a83a1ee9aa",
                     "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "S",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4eb24c15-e386-4d6c-9703-26053137b5ba",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

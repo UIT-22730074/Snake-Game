@@ -5,6 +5,8 @@ using UnityEngine;
 public class WallTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField]
+    SnakeMovement snakeMovement;
     void Start()
     {
         
@@ -13,7 +15,7 @@ public class WallTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.transform.position = new Vector3(0, 1, 0); 
+            snakeMovement.SwitchState(SnakeMovement.SnakeState.Dead);
             //Time.timeScale = 0f;
         }
     }

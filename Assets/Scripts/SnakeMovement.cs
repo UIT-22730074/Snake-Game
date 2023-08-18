@@ -20,6 +20,7 @@ public class SnakeMovement : MonoBehaviour
     private Vector3Int input;
     bool isZ = true;
     bool isUpdate = false;
+    [Header("Visual")]
     [SerializeField]
     ParticleSystem dead;
     [SerializeField]
@@ -105,7 +106,6 @@ public class SnakeMovement : MonoBehaviour
         currentState = state;
     }
     float amount = 1f;
-    List<Vector3> lastPos = new List<Vector3>();
     IEnumerator SetDead()
     {
         textPointL.text = point.ToString();

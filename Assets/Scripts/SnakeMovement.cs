@@ -20,6 +20,8 @@ public class SnakeMovement : MonoBehaviour
     private Vector3Int input;
     bool isZ = true;
     bool isUpdate = false;
+    [Header("Visual")]
+    [Space(30)]
     [SerializeField]
     ParticleSystem dead;
     [SerializeField]
@@ -42,13 +44,13 @@ public class SnakeMovement : MonoBehaviour
     GameObject playUI;
     [SerializeField]
     GameObject LoseUI;
-    private int point =-2;
+    private int point = -2;
     [SerializeField]
     TextMeshProUGUI textPoint;
     [SerializeField]
     TextMeshProUGUI textPointL;
 
-    public Vector3 startpos = Vector3.one; 
+    public Vector3 startpos = Vector3.one;
     public void PlayGame()
     {
         ResetState();
@@ -94,18 +96,21 @@ public class SnakeMovement : MonoBehaviour
                     StartCoroutine(SetDead());
                     break;
                 }
-            case SnakeState.Lose: {
+            case SnakeState.Lose:
+                {
                     LoseUI.SetActive(true);
-                    Time.timeScale = 0; break; }
-            case SnakeState.Start: {
+                    Time.timeScale = 0; break;
+                }
+            case SnakeState.Start:
+                {
                     LoseUI.SetActive(false);
                     startUI.SetActive(true);
-                    lobby.Play();break; }
+                    lobby.Play(); break;
+                }
         }
         currentState = state;
     }
     float amount = 1f;
-    List<Vector3> lastPos = new List<Vector3>();
     IEnumerator SetDead()
     {
         textPointL.text = point.ToString();
@@ -187,12 +192,12 @@ public class SnakeMovement : MonoBehaviour
                     break;
                 }
             default: break;
-            
+
         }
 
 
     }
-    Vector3 oldPosSnake= Vector3.zero;
+    Vector3 oldPosSnake = Vector3.zero;
     private void FixedUpdate()
     {
         switch (currentState)
@@ -260,7 +265,7 @@ public class SnakeMovement : MonoBehaviour
             }
 
         }
-      
+
     }
     public void ResetState()
     {
@@ -268,7 +273,7 @@ public class SnakeMovement : MonoBehaviour
         isUpdate = true;
         point = -2;
         textPoint.text = point.ToString();
-         isZ = true;
+        isZ = true;
         transform.rotation = Quaternion.Euler(-90, 90, 0);
         previousPositions = new Vector3[2, 5000];
         for (int i = 0; i < segments.Count; i++)
@@ -280,17 +285,14 @@ public class SnakeMovement : MonoBehaviour
         deadMaterial.SetFloat("_Amount", 1f);
         direction = new Vector3(0, 0f, 1f);
 
-        // Start at 1 to skip destroying the head
         for (int i = 1; i < segments.Count; i++)
         {
             Destroy(segments[i].gameObject);
         }
 
-        // Clear the list but add back this as the head
         segments.Clear();
         segments.Add(transform);
 
-        // -1 since the head is already in the list
         for (int i = 0; i < initialSize - 1; i++)
         {
             Grow();

@@ -1,6 +1,6 @@
 # SNAKE GAME
 
-
+Code của Man
 ## 1. Giới thiệu trò chơi
 Trò chơi Rắn săn mồi - Snake đã từng là một biểu tượng trong thế giới game điện tử và tiếp tục thu hút người chơi từ khi ra đời đến tận ngày nay. Trò chơi yêu cầu người chơi điều khiển một con rắn trên màn hình, nơi con rắn sẽ di chuyển và ăn các mồi để tăng điểm số.
 

@@ -8,56 +8,81 @@ using UnityEngine.Windows;
 
 public class SnakeMovement : MonoBehaviour
 {
+    // Snake movement direction
     private Vector3 direction = Vector3.right;
+
+    // Input handling
     private SnakeInput snakeInput;
+
+    // List of snake body segments
     List<Transform> segments;
+
+    // Prefab for snake body segments
     public Transform segmentsPrefab;
 
+    // Timing and speed variables
     private float nextUpdate;
     public float speed = 20f;
     public float speedMultiplier = 1f;
+
+    // Initial size of the snake
     public int initialSize = 4;
+
+    // Input direction vector
     private Vector3Int input;
+
+    // Flags to track movement in 2D plane
     bool isZ = true;
     bool isUpdate = false;
-    [SerializeField]
-    ParticleSystem dead;
-    [SerializeField]
-    Material deadMaterial;
-    [SerializeField]
-    AudioSource lose;
+
+    // References to various game elements
+    [SerializeField] ParticleSystem dead;
+    [SerializeField] Material deadMaterial;
+    [SerializeField] AudioSource lose;
+
+    // Possible states of the snake
     public enum SnakeState
     {
         Normal, Dead, Lose, Start
     }
     SnakeState currentState = SnakeState.Start;
-    [SerializeField]
-    AudioSource playgame;
-    [SerializeField]
-    AudioSource lobby;
-    Vector3[,] previousPositions;
-    [SerializeField]
-    GameObject startUI;
-    [SerializeField]
-    GameObject playUI;
-    [SerializeField]
-    GameObject LoseUI;
-    private int point =-2;
-    [SerializeField]
-    TextMeshProUGUI textPoint;
-    [SerializeField]
-    TextMeshProUGUI textPointL;
 
-    public Vector3 startpos = Vector3.one; 
+    // Audio sources for gameplay and lobby
+    [SerializeField] AudioSource playgame;
+    [SerializeField] AudioSource lobby;
+
+    // Array to store previous positions of snake segments
+    Vector3[,] previousPositions;
+
+    // UI elements
+    [SerializeField] GameObject startUI;
+    [SerializeField] GameObject playUI;
+    [SerializeField] GameObject LoseUI;
+
+    // Current point count
+    private int point = -2;
+
+    // Text fields to display points
+    [SerializeField] TextMeshProUGUI textPoint;
+    [SerializeField] TextMeshProUGUI textPointL;
+
+    // Initial position of the snake
+    public Vector3 startpos = Vector3.one;
+
+    // Method to start the game
     public void PlayGame()
     {
         ResetState();
         SwitchState(SnakeState.Normal);
     }
+
+    // Method to return to the start screen
     public void Ok()
     {
         SwitchState(SnakeState.Start);
     }
+
+    // Method to switch between different game states
     public void SwitchState(SnakeState state)
     {
         switch (state)
@@ -73,8 +98,9 @@ public class SnakeMovement : MonoBehaviour
                 }
             case SnakeState.Dead:
                 {
-
                     playUI.SetActive(false);
+
+                    // Restore previous positions of segments
                     for (int i = 0; i < segments.Count; i++)
                     {
                         try
@@ -87,25 +113,42 @@ public class SnakeMovement : MonoBehaviour
                         }
                     }
 
+                    // Reset snake's position
                     transform.position = oldPosSnake;
+
+                    // Play death effects and sounds
                     dead.Play();
                     playgame.Stop();
                     lose.Play();
+
+                    // Trigger dead state animation
                     StartCoroutine(SetDead());
                     break;
                 }
-            case SnakeState.Lose: {
+            case SnakeState.Lose:
+                {
                     LoseUI.SetActive(true);
-                    Time.timeScale = 0; break; }
-            case SnakeState.Start: {
+                    Time.timeScale = 0;
+                    break;
+                }
+            case SnakeState.Start:
+                {
                     LoseUI.SetActive(false);
                     startUI.SetActive(true);
-                    lobby.Play();break; }
+                    lobby.Play();
+                    break;
+                }
         }
         currentState = state;
     }
+
+    // Animation parameter
     float amount = 1f;
+
+    // List to store previous positions for animation
     List<Vector3> lastPos = new List<Vector3>();
+
+    // Coroutine to animate death
     IEnumerator SetDead()
     {
         textPointL.text = point.ToString();
